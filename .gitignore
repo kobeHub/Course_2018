@@ -1,0 +1,17 @@
+##In the subdirectory of this
+##Another git repository was built ,so it was ignored
+## repository : course
+# ignore dir
+/c++/
+/Database/db/
+/OOb/ob/
+/OOb/pre/
+
+
+# ignore .zip
+*.zip
+*.mp*
+*.ogg
+*面向对象*
+
+
