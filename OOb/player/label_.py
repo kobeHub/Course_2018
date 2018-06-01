@@ -8,6 +8,9 @@ from PyQt5.QtWidgets import (QApplication, QFileDialog, QHBoxLayout, QLabel,
 
 
 class QLabel_alterada(QLabel):
+    """
+    Define the label which canbe clicked
+    """
     clicked=pyqtSignal()
     def __init__(self, parent=None):
         QLabel.__init__(self, parent)

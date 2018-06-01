@@ -4,6 +4,10 @@ import pyglet
 
 from pyglet import media
 
+"""
+The abstract base class of the audio-playing mudule
+"""
+
 class playCore(object):
     __metaclass__ = ABCMeta
 

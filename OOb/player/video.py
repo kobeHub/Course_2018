@@ -7,6 +7,11 @@ import os
 from pyglet.gl import *
 from TimeThread import time_thread
 import threading
+"""
+视频窗口的具体实现，由于plglet与QT均可以提供window服务
+而无法共享，所以采用两个窗口．
+
+"""
 
 def draw_rec(x,y,width,height):
     """
@@ -220,22 +225,22 @@ class MyPlayer(pyglet.window.Window):
                                             font_name='Times New Roman',
                                             font_size=18,
                                             x = 500, y = self.padding)
-        self.drawable.append(self.video_time)
+        # self.drawable.append(self.video_time)
 
         self.video_dur = pyglet.text.Label('duration: '+ self.player.get_duration,
                                             font_name='Times New Roman',
                                             font_size=18,
                                             x = 650, y = self.padding)
-        self.drawable.append(self.video_dur)
+        # self.drawable.append(self.video_dur)
 
         
         # self.video_time.begin_update()
-        self.timer = time_thread(self.player, 0, self.content)
-        self.timer.start()
+        # self.timer = time_thread(self.player, 0, self.content)
+        # self.timer.start()
         # self.video_time.end_update()
 
         # threading.Thread(self.update()).start()
-        self.update()
+        # self.update()
         
     def update(self):
         while True:
@@ -256,6 +261,8 @@ class MyPlayer(pyglet.window.Window):
         if self.drawable:
             for draw_c in self.drawable:
                 draw_c.draw()
+            self.video_time.draw()
+            self.video_dur.draw()
 
     def on_mouse_press(self,x,y,button,modifiers):
         for dc in self.drawable:
