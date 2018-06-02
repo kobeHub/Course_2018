@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Class-Path: file:///home/kobe/%E6%96%87%E6%A1%A3/course/OOb/markdown2h
- tml-master/target/classes/com/nilhcem/md2html
+Class-Path: /home/kobe/文档/course/OOb/markdown2html-master/target/c
+ lasses
 Main-Class: com.nilhcem.md2html.App
 
