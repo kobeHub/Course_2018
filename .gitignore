@@ -6,6 +6,7 @@
 /Database/db/
 /OOb/ob/
 /OOb/pre/
+/Database
 
 
 # ignore .zip
@@ -13,5 +14,8 @@
 *.mp*
 *.ogg
 *面向对象*
-
+*.doc
+*.rar
+*.pdf
+.gitignore*
 
