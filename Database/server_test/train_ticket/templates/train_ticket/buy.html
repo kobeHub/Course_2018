@@ -1,0 +1,16 @@
+{% extends 'train_ticket/base.html' %}
+{% load static %}
+{% block title%}购票{% endblock %}
+
+
+{% block content %}
+<div class="row-fluid">
+    <div class="container">
+        <h4>{{error_msg}}</h4>
+        <h4>{{success_msg}}</h4>
+        <legend>金额：{{price}}</legend>
+        <a href="{% url 'train_ticket:pay' order_num ticket_num 1 %}"><button class="btn btn-primary">支付</button></a>
+            <a href="{% url 'train_ticket:pay' order_num ticket_num 0 %}"><button calss="btn btn-primary">取消订单</button></a>
+    </div>
+</div>
+{% endblock %}

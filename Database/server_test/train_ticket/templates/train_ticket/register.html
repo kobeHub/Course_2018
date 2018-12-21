@@ -1,0 +1,104 @@
+{% extends 'train_ticket/base.html' %}
+{% load staticfiles %}
+{% block title %}注册{% endblock %}
+{% block css %}<link href="{% static 'train_ticket/register.css' %}" rel="stylesheet"/>{% endblock %}
+
+{% block content %}
+<div class="container">
+        <div class="col-md-7 m-auto">
+            <form class='form-login' action="{% url 'train_ticket:register' %}" method="post"  name="register">
+                {% csrf_token %}
+                <h2>注册成为Innohub用户</h2>
+                <div class="form-group">
+                    <label for="name">姓名：</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="name" >
+                </div>
+                <div class="input-group mb-3">
+                    <div class="imput-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">性别</label>
+                    </div>
+                    <select id="inputGroupSelect01" class="custom-select" name="sex">
+                        <option selected>------</option>
+                        <option value="M">男</option>
+                        <option value="F">女</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail">邮箱地址：</label>
+                    <input type="text" name="email" id="exampleInputEmail"  placeholder="email" class="form-control" auto-complete="off"/>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNum">手机号：</label>
+                    <input type="text" name="phone" id="phoneNum" class="form-control" placeholder="phone number"i aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">您的邮箱、手机号信息仅用于注册，我们不会用于其他用途，注册成功后可以作为用户名使用</small>
+                    </div>
+                <div class="input-group mb-3">
+                    <div class="imput-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect02">证件类型</label>
+                    </div>
+                    <select id="inputGroupSelect02" class="custom-select" name="card_type">
+                        <option selected>------</option>
+                        <option value="EDJ">二代居民身份证</option>
+                        <option value="LSS">临时身份证</option>
+                        <option value="HKB">户口簿</option>
+                        <option value="JRB">中国人民解放军军人保障卡</option>
+                        <option value="JGZ">军官证</option>
+                        <option value="WJJ">武警警官证</option>
+                        <option value="SBZ">士兵证</option>
+                        <option value="JDX">军队学员证</option>
+                        <option value="JDW">军队文职干部证</option>
+                        <option value="JDL">军队离休干部证</option>
+                        <option value="HZ">护照</option>
+                        <option value="GAJ">港澳居民来往内地通行证</option>
+                        <option value="GAT">中华人民共和国来往港澳通行证</option>
+                        <option value="TWJ">台湾居民来往大陆通行证</option>
+                        <option value="DLJ">大陆居民往来台湾通行证</option>
+                        <option value="WJL">外国人居留证</option>
+                        <option value="RJZ">外国人出入境证</option>
+                        <option value="WJG">外交官证</option>
+                        <option value="LSG">领事馆证</option>
+                        <option value="HYZ">海员证</option>
+                        <option value="WGR">外交部开具的外国人身份证明</option>
+                        <option value="DFG">地方公安机关出入境管理部门开具的护照遗失证明</option>
+                        <option value="TLG">铁路公安部门填发的乘坐旅客列车临时身份证明</option>
+                        <option value="XSZ">身高不足1.5m未成年人的学生证</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cardNumber">证件号码：</label>
+                    <input type="text" name="card_num" id="cardNumber" class="form-control" placeholder="card number">
+                </div>
+                <div class="form-group">
+                    <label for="id_passwd">密码：</label>
+                    <input type="password" name="passwd" class="form-control" id="id_passwd" placeholder="password" reqired auto-complete="off">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" onsubmit="return MyCheck();">注册</button>
+                <button type="reset" class="btn btn-secondary btn-lg btn-block">重置</button>
+            </form>
+        </div>
+     </div> 
+{%endblock%}
+{% block script %}
+    <script type="text/javascript">
+            {% if success_msg %}
+                alert('{{success_msg}}');
+            {% endif %}
+            {% if  error_msg %}
+                alert('{{error_msg}}');
+            {% endif %}
+    </script>
+    <script type="text/javascript">
+         function MyCheck(){
+             let sets = document.register.elements
+             for(let i = 0; i<sets.length-2; i++){
+                 if(sets[i].value=""){
+                    alert("当前表格不可含有空项！");
+                    sets[i].focus();
+                    return false;
+                }
+             }
+             return true;
+         }
+    </script>
+{% endblock %}

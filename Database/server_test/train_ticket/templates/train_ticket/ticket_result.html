@@ -1,0 +1,58 @@
+{% extends 'train_ticket/base.html' %}
+{% load static %}
+{%block title%}登录{%endblock%}
+{% block content %}
+<div class="container">
+    <div class="col-md-7">
+        <legend>{{msg}}</legend>
+        {% if order_set %}
+        <table class="table">
+            <thead>
+                <th scope="col">订单号</th>
+                <th scoe="col">车次</th>
+                <th scope="col">姓名</th>
+                <th scope="col">email</th>
+                <th scope="col">订单状态</th>
+                <th scope="col">时间</th>
+                <th scope="col">金额</th>
+            </thead>
+            {% for order in order_set %}
+            <tbody>
+                <th scope="row">{{order.order_num}}</th>
+                <td>{{order.train_num_id}}</td>
+                <td>{{name}}</td>
+                <td>{{order.email}}</td>
+                <td>{{order.order_status}}</td>
+                <td>{{order.pub_date}}</td>
+                <td>{{order.price}}</td>
+                <td>
+                    <div class="nav-item dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    订单操作
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                   {% if order.order_status == 'Changing' %}
+                                   <a class="dropdown-item" href="{% url 'train_ticket:payback' order.order_num %}">退票</a>
+                                   <a class="dropdown-item" href="{% url 'train_ticket:change' order.order_num %}">改签</a>
+                                    {% elif order.order_status == 'Unpay' %}
+                                    <a class="dropdown-item" href="#">支付</a>
+                                    {% elif order.order_status == 'Payback' %}
+                                    <a class="dropdown-item" href="{% url 'train_ticket:pay_back' order.order_num %}">退票</a>
+                                    {% else %}
+                                    <a class="dropdown-item" href="{% url  'train_ticket:delete' order.order_num %}">删除</a>
+                                    {% endif %}
+                        </div>
+                    </div>
+                </td>
+            </tbody>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+alert(msg);
+</script>
+{% endblock%}

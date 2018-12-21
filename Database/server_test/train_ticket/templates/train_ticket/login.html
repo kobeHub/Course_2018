@@ -1,0 +1,28 @@
+{% extends 'train_ticket/base.html' %}
+{% load static %}
+{%block title%}登录{%endblock%}
+{% block css %}<link rel="stylesheet" href="{% static 'train_ticket/login.css'%}">{% endblock %}
+
+{% block content %}
+
+ <div class="container">
+        <div class="col-md-7 m-auto">
+            <form class='form-login' action="{% url 'train_ticket:login' %}" method="post" autocomplete="new-password">
+                {% csrf_token %}
+              <h2 class="text-center">欢迎登录</h2>
+              <div class="form-group">
+                <label for="id_username">用户名：</label>
+                <input type="text" name='username' class="form-control" id="id_username" placeholder="手机号/邮箱" autofocus required>
+              </div>
+              <div class="form-group">
+                <label for="id_password">密码：</label>
+                <input type="password" name='passwd' class="form-control" id="id_password" placeholder="Password" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">提交</button>
+              <button type="reset" class="btn btn-secondary btn-lg btn-block">重置</button>
+          </form>
+          <h4>{{error_msg}}{{success_msg}}</h4>
+        </div>
+    </div>
+{% endblock %}
+

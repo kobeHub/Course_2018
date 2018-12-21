@@ -1,0 +1,13 @@
+ul  {
+    color: green;
+}
+
+body {
+    background: black url('images/background.jpg') no-repeat;
+}
+
+p {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
