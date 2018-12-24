@@ -20,5 +20,6 @@
 *.doc
 *.rar
 *.pdf
+!PRD.pdf
 .gitignore*
 
