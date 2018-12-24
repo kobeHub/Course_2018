@@ -2,7 +2,7 @@
 
 ![GCC](https://img.shields.io/badge/Build-pass-brightgreen.svg)  ![gdb](https://img.shields.io/badge/django-2.1-brightgreen.svg)  ![Hex.pm](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)  
 
-##Introduction
+## Introduction
 
 **The program is a database course design in software college, ShanDong University.** 
 
